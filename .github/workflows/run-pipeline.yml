@@ -26,7 +26,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install "openfilter[all]" pytest
+          pip install openfilter"[all]" pytest
 
       - name: Run pipeline (90s timeout)
         run: |
