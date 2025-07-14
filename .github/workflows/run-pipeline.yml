@@ -27,7 +27,7 @@ jobs:
           source .venv/bin/activate
           pip install --upgrade pip
           pip install openfilter"[all]" pytest
-          make install
+          cd openfilter && make install
 
       - name: Run pipeline (90s timeout)
         run: |
