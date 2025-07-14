@@ -4,7 +4,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 
 from openfilter.filter_runtime.filter import Filter
 from openfilter.filter_runtime.filters.video_in import VideoIn
-from filter_optical_character_recognition.filter import FilterOpticalCharacterRecognition
 from openfilter.filter_runtime.filters.webvis import Webvis
 
 if __name__ == "__main__":
