@@ -33,5 +33,4 @@ jobs:
 
       - name: Run pipeline (90s timeout)
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
           timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
