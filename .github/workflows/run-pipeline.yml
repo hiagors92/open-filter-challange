@@ -21,16 +21,15 @@ jobs:
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y libgl1 libglib2.0-0
 
-      - name: Set up virtual environment and install dependencies
-        working-directory: openfilter
+      - name: Set up virtual environment and install local package
         run: |
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
           pip install "openfilter[all]" pytest
+          pip install -e .
 
       - name: Run pipeline (90s timeout)
-        working-directory: openfilter
         run: |
           source .venv/bin/activate
-          timeout 90s python examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+          timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
