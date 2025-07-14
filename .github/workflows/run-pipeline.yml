@@ -1,3 +1,10 @@
+name: Run OCR Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
