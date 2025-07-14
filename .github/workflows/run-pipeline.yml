@@ -2,6 +2,9 @@ name: Run OCR Pipeline
 
 on:
   workflow_dispatch:
+    push:
+      branches:
+        - main
 
 jobs:
   run-pipeline:
@@ -29,5 +32,4 @@ jobs:
       - name: Run pipeline with timeout
         run: |
           source .venv/bin/activate
-          cd openfilter
-          timeout 90s python examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+          timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out" # Updated path to script

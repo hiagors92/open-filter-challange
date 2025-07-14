@@ -16,7 +16,7 @@ if __name__ == "__main__":
                 "sources": [{
                     "source": "file://example_video.mp4",
                     "topic": "main",
-                    "options": {"loop": True}
+                    "options": {"loop": True} 
                 }]
             }),
             (FilterOpticalCharacterRecognition, {
@@ -32,4 +32,4 @@ if __name__ == "__main__":
             })
         ])
     except Exception as e:
-        print(f"[ERRO] peline: {e}")
+        print(f"[ERRO]: {e}")
