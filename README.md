@@ -118,3 +118,12 @@ Test coverage includes:
 - Results are visualized and exported
 - Errors are handled gracefully
 - Code follows modular and readable structure
+
+## Current Status Update
+
+I've made significant progress on the OCR filter. the **OCR Filter** was successfully selected and fully integrated into the pipeline. We're now seeing concrete results, with output data being generated and saved as expected. For instance, recent runs show:
+
+* `2025-07-14 02:30:46.542 34620 INFO Saved subject data to ./output/subject_data.json`
+* `2025-07-14 02:30:46.542 34620 INFO OCR Filter shutting down. Processed data saved at ./output/ocr_results.json`
+
+To run the code, simply navigate to the `openfilter/examples/hello-world` directory in your terminal and execute: `python pipeline_runner.py`.
