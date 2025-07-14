@@ -1,10 +1,3 @@
-name: Run OCR Pipeline
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
@@ -27,6 +20,9 @@ jobs:
           source .venv/bin/activate
           pip install --upgrade pip
           pip install openfilter"[all]" pytest
+
+      - name: List installed packages
+        run: pip freeze
 
       - name: Run pipeline (90s timeout)
         run: |
