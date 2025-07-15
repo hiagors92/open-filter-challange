@@ -19,15 +19,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up virtualenv and install project
+      - name: Create virtualenv and install project dependencies
         run: |
           python -m venv .venv
           source .venv/bin/activate
-          cd openfilter
-          make install
+          pip install openfilter'[all]'
+          (cd openfilter && make install)
 
       - name: Run pipeline with timeout
         run: |
-          python -m venv .venv
           source .venv/bin/activate 
           python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
