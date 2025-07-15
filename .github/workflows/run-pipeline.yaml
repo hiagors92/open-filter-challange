@@ -9,8 +9,10 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+
     env:
-      OPENLINEAGE_URL: http://localhost:5000/api/v1/namespaces/default/jobs/dummy-job-name/runs/dummy-run-id # Exemplo de URL dummy
+      OPENLINEAGE_URL: http://localhost:5000/api/v1/namespaces/default/jobs/dummy-job-name/runs/dummy-run-id
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,19 +24,14 @@ jobs:
 
       - name: Create virtualenv and install dependencies
         run: |
-          pip install --upgrade pip
-          pip install openfilter'[all]'
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          (cd openfilter && make install)
-          export PYTHONPATH=$PYTHONPATH:$(pwd)/openfilter/examples 
-          timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out" 
+          pip install openfilter'[all]'
+          pip install .
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
 
-          
-
-      - name: Debug current directory and PYTHONPATH
+      - name: Run pipeline with timeout
         run: |
-          pwd
-          ls -R
-          echo "PYTHONPATH: $PYTHONPATH"
+          source .venv/bin/activate
+          timeout 90s python examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
