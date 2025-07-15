@@ -22,13 +22,16 @@ classifiers = [
 dynamic = ["version"]
 
 dependencies = [
+  "openfilter[all]==0.1.2",
+  "filter-optical-character-recognition==0.1.1",
+  "requests==2.32.4",
   "numpy==1.26.4",
   "opencv-python-headless==4.10.0.84",
   "psutil==5.9.8",
   "pyzmq==26.2.0",
   "openlineage-python==1.33.0",
-  "requests==2.32.4"
-
+  "easyocr",
+  "pytesseract"
 ]
 
 [tool.setuptools.dynamic]
