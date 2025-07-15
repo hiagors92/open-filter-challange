@@ -22,7 +22,6 @@ classifiers = [
 dynamic = ["version"]
 
 dependencies = [
-  "openfilter[all]",
   "filter-optical-character-recognition==0.1.1",
   "requests==2.32.4",
   "numpy==1.26.4",
