@@ -36,7 +36,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           cd openfilter 
-          pip install openfilter'[all]'
+          pip install git+ssh://git@github.com/PlainsightAI/openfilter.git@main#egg=openfilter[all]
           make install
           cd examples/hello-world
           python pipeline_runner.py || echo "Pipeline finished or timed out"
