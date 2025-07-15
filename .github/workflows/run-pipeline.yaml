@@ -29,6 +29,5 @@ jobs:
 
       - name: Run pipeline with timeout
         run: |
-          source .venv/bin/activate
           cd openfilter/examples/hello-world
           timeout 90s python pipeline_runner.py || echo "Pipeline finished or timed out"
