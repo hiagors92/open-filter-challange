@@ -15,14 +15,21 @@ Feature: Handle pipeline misconfiguration and failures
     When the pipeline is executed
     Then it should log a configuration error and not crash
 
-  Feature: Measure OCR pipeline performance
 
-Scenario: Measure pipeline execution time under normal load
-  Given the pipeline is executed with a small video file
-  When the pipeline finishes
-  Then the execution time should be below 10 seconds
+Feature: Measure OCR pipeline performance
 
-Scenario: Measure memory usage of OCR pipeline
-  Given the pipeline is run with memory profiling enabled
-  When the pipeline finishes
-  Then the memory usage should not exceed 300MB
+  Scenario: Measure pipeline execution time under normal load
+    Given the pipeline is executed with a small video file
+    When the pipeline finishes
+    Then the execution time should be below 10 seconds
+
+  Scenario: Measure memory usage of OCR pipeline
+    Given the pipeline is run with memory profiling enabled
+    When the pipeline finishes
+    Then the memory usage should not exceed 300MB
+
+  Scenario: Frame Skipping for Performance
+    Given an OCR filter configured with frame_skip enabled (e.g., frame_skip=5)
+    When frames are processed by the OCR filter
+    Then OCR results should be generated only for every Nth frame
+    And intermediate frames should use cached OCR results or no results at all
