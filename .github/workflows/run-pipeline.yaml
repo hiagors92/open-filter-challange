@@ -33,6 +33,7 @@ jobs:
         run: |
           python -m venv .venv
           source .venv/bin/activate
+          pip install openfilter'[all]'
           export PYTHONPATH=$PYTHONPATH:$(pwd)/openfilter/examples 
           timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out" 
 
