@@ -23,10 +23,10 @@ jobs:
         run: |
           python -m venv .venv
           source .venv/bin/activate
-          pip install -e .  
+          pip install openfilter'[all]'
+          (cd openfilter && make install)
 
       - name: Run pipeline with timeout
         run: |
-          source .venv/bin/activate
           cd openfilter/examples/hello-world
           timeout 90s python pipeline_runner.py || echo "Pipeline finished or timed out"
