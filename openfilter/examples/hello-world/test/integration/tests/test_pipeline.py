@@ -1,5 +1,6 @@
 from pytest_bdd import scenarios
 
-scenarios('../features/pipeline_success.feature')
-scenarios('../features/pipeline_failure.feature')
-scenarios('../features/pipeline_performance.feature')
+scenarios('../features/integration_failure.feature')
+scenarios('../features/integration_success.feature')
+scenarios('../features/ocr_performance.feature')
+scenarios('../features/performance.feature')

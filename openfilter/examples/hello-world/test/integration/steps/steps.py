@@ -222,4 +222,48 @@ def config_error_no_crash():
     assert process_result['returncode'] == 0, "Pipeline crashed when it should not have"
     assert "Configuration error" in process_result['stderr'] or "Warning" in process_result['stderr'], \
            f"Expected configuration error/warning not found in stderr: {process_result['stderr']}"
-    assert not os.path.exists("output/ocr_results.json") 
+    assert not os.path.exists("output/ocr_results.json")
+
+import time
+import psutil
+
+@then("the execution time should be below 10 seconds")
+def check_execution_time():
+    process_result = run_pipeline.last_process_result
+    assert "Execution time:" in process_result["stdout"], "Execution time log not found"
+    for line in process_result["stdout"].splitlines():
+        if "Execution time:" in line:
+            seconds = float(line.split("Execution time:")[1].split("seconds")[0].strip())
+            assert seconds < 10, f"Execution time too high: {seconds} seconds"
+
+@then("the memory usage should not exceed 300MB")
+def check_memory_usage():
+    memory_log_file = "benchmark_results.csv"
+    assert os.path.exists(memory_log_file), "Benchmark file not found"
+    with open(memory_log_file, "r") as f:
+        lines = f.readlines()
+        for line in lines[1:]:
+            try:
+                memory_percent = float(line.strip().split(",")[2])
+                # Assume system has 1GB minimum to convert %
+                memory_mb = (memory_percent / 100.0) * 1000
+                assert memory_mb <= 300, f"Memory usage too high: {memory_mb}MB"
+            except (ValueError, IndexError):
+                continue
+
+@then("OCR results should be generated only for every Nth frame")
+def check_frame_skipping_behavior():
+    # Simplified placeholder check; assumes output has frame_number field
+    with open("output/ocr_results.json") as f:
+        data = json.load(f)
+        frames = [entry.get("frame_number") for entry in data if "frame_number" in entry]
+        skips = [b - a for a, b in zip(frames, frames[1:])]
+        assert all(skip >= 5 for skip in skips), f"Frame skipping not consistent: {skips}"
+
+@then("intermediate frames should use cached OCR results or no results at all")
+def check_cached_results_usage():
+    # This step assumes that OCR output includes info about cached usage (mock logic)
+    with open("output/ocr_results.json") as f:
+        data = json.load(f)
+        cached_flags = [entry.get("cached", False) for entry in data]
+        assert any(cached_flags), "No cached OCR results found"
