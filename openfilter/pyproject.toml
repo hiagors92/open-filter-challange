@@ -27,8 +27,9 @@ dependencies = [
   "psutil==5.9.8",
   "pyzmq==26.2.0",
   "openlineage-python==1.33.0",
-  "requests==2.32.4"
-
+  "requests==2.32.4",
+  "easyocr",
+  "pytesseract",
 ]
 
 [tool.setuptools.dynamic]
