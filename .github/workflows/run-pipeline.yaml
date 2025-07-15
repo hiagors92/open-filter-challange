@@ -25,6 +25,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           python -m pip install --upgrade pip
+          source .venv/bin/activate
           python -m pip install requests
           python -m pip install openfilter'[all]'
           (cd openfilter && make install)
