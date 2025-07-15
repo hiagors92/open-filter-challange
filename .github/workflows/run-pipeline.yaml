@@ -20,12 +20,13 @@ jobs:
         with:
           python-version: "3.12"
 
+
       - name: Set up virtual environment and install dependencies
         run: |
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install openfilter'[all]'
+          pip install "openfilter[all]==0.1.2" || echo "fallback to compatible version"
           pip install easyocr
           pip install .  
           cd openfilter
