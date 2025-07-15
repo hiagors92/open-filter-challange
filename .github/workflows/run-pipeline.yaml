@@ -36,6 +36,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           cd openfilter 
+          pip install openfilter'[all]'
           make install
           cd examples/hello-world
           python pipeline_runner.py || echo "Pipeline finished or timed out"
