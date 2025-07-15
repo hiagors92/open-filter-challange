@@ -28,5 +28,11 @@ jobs:
 
       - name: Run pipeline with timeout
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          timeout 90s python examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+          export PYTHONPATH=$PYTHONPATH:.
+          timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+        
+      - name: Debug current directory and PYTHONPATH
+        run: |
+          pwd
+          ls -R
+          echo "PYTHONPATH: $PYTHONPATH"
