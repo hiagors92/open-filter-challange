@@ -10,8 +10,7 @@ jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     env:
-      OPENLINEAGE_URL: http://localhost:5000/api/v1/namespaces/default/jobs/dummy-job-name/runs/dummy-run-id
-
+      OPENLINEAGE_DISABLED: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
