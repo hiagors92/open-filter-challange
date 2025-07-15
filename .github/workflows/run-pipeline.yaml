@@ -26,9 +26,11 @@ jobs:
           pip install openfilter'[all]'
           python -m venv .venv
           source .venv/bin/activate
+          pip install --upgrade pip
           (cd openfilter && make install)
           export PYTHONPATH=$PYTHONPATH:$(pwd)/openfilter/examples 
           timeout 90s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out" 
+
           
 
       - name: Debug current directory and PYTHONPATH
