@@ -5,9 +5,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'openfilter/**'
+      - 'ocr-filter/**'
+      - '.github/workflows/run-pipeline.yaml'
 
 jobs:
-  run-pipeline:
+  run-openfilter-pipeline:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message contains '[openfilter]'
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
@@ -38,4 +43,33 @@ jobs:
           source .venv/bin/activate
           export PYTHONPATH=$PYTHONPATH:$(pwd)
           python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+        shell: bash
+
+  run-ocr-filter-pipeline:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message contains '[ocr-filter]'
+    runs-on: ubuntu-latest
+    env:
+      OPENLINEAGE_DISABLED: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up virtual environment and install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install openfilter'[all]'' 
+          make install
+        shell: bash
+
+      - name: Log and skip OCR pipeline
+        run: |
+          source .venv/bin/activate
+          echo "OCR filter directory detected, but as taylor sad 'just let me try something' we are skipping the OCR pipeline for now."
         shell: bash

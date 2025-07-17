@@ -52,3 +52,12 @@ Feature: Handle pipeline misconfiguration and failures
     When the pipeline is executed
     Then the OCR output file should contain the expected text results
     And the confidence scores should meet a minimum threshold
+
+  Scenario: Topic Filtering for OCR Processing
+    Given a pipeline with multiple video sources on different topics
+    And an OCR filter configured to process only a specific topic pattern
+    When the pipeline is executed
+    Then OCR results should only be generated for frames from the matching topics
+    And no OCR results should be present for excluded topics
+
+  
