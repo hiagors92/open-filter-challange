@@ -12,7 +12,7 @@ on:
 
 jobs:
   run-openfilter-pipeline:
-    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message contains '[openfilter]'
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message contains '[ocr-filter]'
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
