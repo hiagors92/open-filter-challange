@@ -37,14 +37,8 @@ jobs:
       - name: Set up virtual environment and install dependencies
         run: |
           cd openfilter
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install --upgrade pip
-          pip install openfilter'[all]'
-          pip install easyocr
-          pip install .  
-          cd openfilter
-          make install
+          pip install poetry
+          poetry install
         shell: bash
 
       - name: Run pipeline
@@ -74,8 +68,8 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install openfilter'[all]' 
-          make install
+          pip install poetry
+          poetry install
         shell: bash
 
       - name: Run OCR tests
