@@ -39,7 +39,7 @@ jobs:
         run: |
           cd openfilter
           pip install poetry
-          poetry install
+          if [ -f pyproject.toml ]; then poetry lock && poetry install; else echo "No pyproject.toml in openfilter"; fi
         shell: bash
 
       - name: Run pipeline
@@ -71,7 +71,7 @@ jobs:
           source .venv/bin/activate
           pip install --upgrade pip
           pip install poetry
-          poetry install
+          if [ -f pyproject.toml ]; then poetry lock && poetry install; else echo "No pyproject.toml in ocr-filter"; fi
         shell: bash
 
       - name: Run OCR tests
