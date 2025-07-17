@@ -12,7 +12,7 @@ on:
 
 jobs:
   run-openfilter-pipeline:
-    if: github.event_name == 'workflow_dispatch' || '[openfilter]' in github.event.head_commit.message
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[openfilter]')
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
@@ -46,7 +46,7 @@ jobs:
         shell: bash
 
   run-ocr-filter-pipeline:
-    if: github.event_name == 'workflow_dispatch' || '[ocr-filter]' in github.event.head_commit.message
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[ocr-filter]')
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
@@ -64,7 +64,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install openfilter'[all]'' 
+          pip install 'openfilter[all]' # Corrigido a string, aspas simples internas não são necessárias se não houver conflito
           make install
         shell: bash
 
