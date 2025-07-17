@@ -20,7 +20,7 @@ on:
 
 jobs:
   run-openfilter-pipeline:
-    timeout-minutes: 1
+    timeout-minutes: 10
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' 
     runs-on: ubuntu-latest
     env:
@@ -50,7 +50,7 @@ jobs:
         shell: bash
 
   run-ocr-filter-pipeline:
-    timeout-minutes: 1
+    timeout-minutes: 10
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     env:
