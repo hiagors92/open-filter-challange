@@ -9,10 +9,18 @@ on:
       - 'openfilter/**'
       - 'ocr-filter/**'
       - '.github/workflows/run-pipeline.yaml'
+  pull_request: 
+    branches:
+      - main
+    types: [opened, synchronize, reopened] 
+    paths:
+      - 'openfilter/**'
+      - 'ocr-filter/**'
+      - '.github/workflows/run-pipeline.yaml'
 
 jobs:
   run-openfilter-pipeline:
-    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[openfilter]')
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
