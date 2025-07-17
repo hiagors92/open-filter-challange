@@ -20,6 +20,7 @@ on:
 
 jobs:
   run-openfilter-pipeline:
+    timeout-minutes: 1
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' 
     runs-on: ubuntu-latest
     env:
@@ -45,10 +46,11 @@ jobs:
         run: |
           source .venv/bin/activate
           export PYTHONPATH=$PYTHONPATH:$(pwd)
-          python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+          timeout 30s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
         shell: bash
 
   run-ocr-filter-pipeline:
+    timeout-minutes: 1
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     env:
@@ -84,5 +86,5 @@ jobs:
           cd ocr-filter
           source .venv/bin/activate
           export PYTHONPATH=$PYTHONPATH:$(pwd)
-          python pipeline_runner.py || echo "OCR pipeline finished or failed gracefully"
+          timeout 30s python pipeline_runner.py || echo "OCR pipeline finished or timed out"
         shell: bash
