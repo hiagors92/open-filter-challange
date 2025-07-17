@@ -1,3 +1,11 @@
+[project]
+name = "openfilter"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.10, <3.13"
+license = "Apache-2.0"
+dependencies = ["openlineage-python (>=1.35.0,<2.0.0)", "opencv-python-headless (==4.10.0.84)", "numpy (==1.26.4)", "easyocr (>=1.7.2,<2.0.0)", "matplotlib (>=3.10.3,<4.0.0)", "pyzmq (>=27.0.0,<28.0.0)", "pytesseract (>=0.3.13,<0.4.0)", "pillow (>=11.3.0,<12.0.0)", "flask (>=3.1.1,<4.0.0)", "psutil (>=7.0.0,<8.0.0)", "python-dotenv (>=1.1.1,<2.0.0)"]
+
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
@@ -6,11 +14,6 @@ build-backend = "setuptools.build_meta"
 where = ["."]
 include = ["openfilter*"]
 
-[project]
-name = "openfilter"
-readme = "README.md"
-requires-python = ">=3.10, <3.13"
-license = "Apache-2.0"
 
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -18,8 +21,6 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
 ]
-
-dynamic = ["version"]
 
 dependencies = [
   "filter-optical-character-recognition==0.1.1",
@@ -33,11 +34,19 @@ dependencies = [
   "pytesseract"
 ]
 
-[tool.setuptools.dynamic]
-version = { file = "VERSION" }
+
 
 [tool.distutils.bdist_wheel]
 python-tag = "py3"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.1"
+pytest-bdd = "^8.1.0"
+parse = "^1.20.2"
+parse-type = "^0.6.4"
+gherkin-official = "^29.0.0"
+mako = "^1.3.10"
 
 [project.scripts]
 openfilter = "openfilter.cli.__main__:main"
@@ -46,14 +55,23 @@ openfilter = "openfilter.cli.__main__:main"
 [project.optional-dependencies]
 
 dev = [
-  "build==1.2.1",
+  "build>=1.2.2",
   "docker==7.1.0",
-  "setuptools==72.2.0",  # already included in base deps
+  "setuptools==72.2.0",
   "twine>=6.1.0,<7",
   "wheel==0.44.0",
-  "pytest==8.3.4",
+  "pytest==8.4.1",
   "jq==1.8.0",
   "pytest-cov==6.0.0",
+]
+
+test = [
+  "pytest",
+  "pytest-bdd",
+  "parse",
+  "parse-type",
+  "gherkin-official",
+  "mako"
 ]
 
 mqtt_out = [

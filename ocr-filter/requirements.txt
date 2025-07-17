@@ -1,1 +1,9 @@
-pip install filter-optical-character-recognition
+pytest
+pytest-bdd
+parse
+parse-type
+gherkin-official
+mako
+
+
+

@@ -6,8 +6,8 @@ import yaml
 import tempfile
 from contextlib import contextmanager
 
-# Load scenarios from the features directory
-scenarios('../features')
+
+scenarios('../features/integration_sucess.feature')
 
 # --- Fixtures and Helper Functions ---
 

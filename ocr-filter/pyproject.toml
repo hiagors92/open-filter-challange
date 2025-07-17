@@ -21,11 +21,23 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 
-dynamic = ["version"]
+version = "0.1.0"
 
 dependencies = [
   "openfilter[all]>=0.1.2",
   "filter-optical-character-recognition==0.1.1",
+  "easyocr",
+  "opencv-python",
+  "numpy",
+  "matplotlib",
+  "pyzmq",
+  "flask",
+  "pytesseract",
+  "Pillow",
+  "parse",
+  "parse-type",
+  "gherkin-official",
+  "mako",
 ]
 
 [project.optional-dependencies]
@@ -36,6 +48,7 @@ dev = [
   "wheel==0.44.0",
   "pytest==8.3.4",
   "pytest-cov==6.0.0",
+  "pytest-bdd",
 ]
 
 [[tool.uv.index]]
