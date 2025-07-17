@@ -39,9 +39,6 @@ clean:  ## Delete all generated files and directories
 	find . -name __pycache__ -type d -exec rm -rf {} +
 
 
-.PHONY: install
-install:  ## Install package with dev dependencies from PyPI
-	pip install -e .[all,dev]
 
 
 # ---------------------------------
