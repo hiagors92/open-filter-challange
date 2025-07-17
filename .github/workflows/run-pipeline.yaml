@@ -12,9 +12,7 @@ on:
 
 jobs:
   run-openfilter-pipeline:
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.head_commit.message && contains(github.event.head_commit.message, '[openfilter]'))
+    if: github.event_name == 'workflow_dispatch' || '[openfilter]' in github.event.head_commit.message
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
@@ -48,9 +46,7 @@ jobs:
         shell: bash
 
   run-ocr-filter-pipeline:
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.head_commit.message && contains(github.event.head_commit.message, '[ocr-filter]'))
+    if: github.event_name == 'workflow_dispatch' || '[ocr-filter]' in github.event.head_commit.message
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
