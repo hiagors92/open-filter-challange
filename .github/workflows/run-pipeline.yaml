@@ -72,7 +72,7 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install 'openfilter[all]' # Corrigido a string, aspas simples internas não são necessárias se não houver conflito
+          pip install openfilter'[all]' 
           make install
         shell: bash
 
