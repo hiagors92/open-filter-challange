@@ -1,0 +1,2 @@
+timestamp,execution_time_s,cpu_user_start,cpu_system_start,cpu_user_end,cpu_system_end,mem_start_mb,mem_end_mb,mem_delta_mb,video_name,loop_enabled,frame_count,duration_s,fps
+2025-07-17T02:32:26.969192,6.32,5.145027072,2.55792768,5.149474816,2.570772736,259.28,72.39,-186.89,example_video.mp4,False,0,6.320533990859985,

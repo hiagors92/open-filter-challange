@@ -121,9 +121,34 @@ Test coverage includes:
 
 ## Current Status Update
 
-I've made significant progress on the OCR filter. the **OCR Filter** was successfully selected and fully integrated into the pipeline. We're now seeing concrete results, with output data being generated and saved as expected. For instance, recent runs show:
+Significant progress has been made on the OCR pipeline integration. The **OCR Filter** has been successfully selected and fully integrated, producing expected outputs and persisting results correctly. Recent executions confirm that the pipeline is functional and stable:
 
 * `2025-07-14 02:30:46.542 34620 INFO Saved subject data to ./output/subject_data.json`
 * `2025-07-14 02:30:46.542 34620 INFO OCR Filter shutting down. Processed data saved at ./output/ocr_results.json`
 
-To run the code, simply navigate to the `openfilter/examples/hello-world` directory in your terminal and execute: `python pipeline_runner.py`.
+To run the current pipeline, navigate to `openfilter/examples/hello-world` and execute:
+
+```bash
+python pipeline_runner.py
+```
+
+## Current Development Status
+
+### Isolated OCR Environment
+- Established a dedicated directory `ocr-filter/` to separate experimental OCR logic and tests.
+  - Includes `script.py`, `pipeline_runner.py`, and corresponding test directories.
+  - Introduced `poetry` for dependency management via `pyproject.toml`.
+
+### Poetry-Based Project Conversion
+- Migrated OpenFilter project structure to use `poetry` for consistent dependency resolution.
+- Installed and configured essential tools: `pytest`, `pytest-bdd`, `memory_profiler`, and others.
+- Locked dependencies and resolved conflicts previously introduced by `requirements.txt`.
+
+### Test Refactor (In Progress)
+- Unified BDD test structure under `ocr-filter/tests/integration/`, consolidating:
+  - `.feature` files
+  - `steps.py`
+  - `test_pipeline.py`
+- Refactored path handling using `pathlib` to ensure compatibility across different operating systems.
+- Removed duplicate or broken tests and standardized naming conventions.
+- [Pending]: Full BDD test integration to improve clarity and usability for new contributors.
