@@ -80,6 +80,7 @@ jobs:
 
       - name: Log and skip OCR pipeline
         run: |
+          cd ocr-filter
           source .venv/bin/activate
           echo "OCR filter directory detected, but as taylor sad 'just let me try something' we are skipping the OCR pipeline for now."
         shell: bash
