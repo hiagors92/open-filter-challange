@@ -1,1 +1,4 @@
-pip install filter-optical-character-recognition
+--extra-index-url https://python.openfilter.io/simple
+
+openfilter[all]==0.1.2
+filter-optical-character-recognition==0.1.1
