@@ -34,17 +34,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up virtual environment and install dependencies (openfilter)
+      - name: Install dependencies (openfilter)
         run: |
           cd openfilter
-          pip install poetry # Instala o Poetry globalmente ou no venv default do setup-python
-          if [ -f pyproject.toml ]; then poetry lock && poetry install --no-root; else echo "No pyproject.toml in openfilter"; fi
+          pip install poetry
+          poetry install --no-root
         shell: bash
 
       - name: Run OpenFilter pipeline
         run: |
-          cd openfilter # Navega para a pasta do projeto openfilter
-          export PYTHONPATH=$PYTHONPATH:$(pwd) # Adiciona o diretório atual ao PYTHONPATH
+          cd openfilter
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           timeout 30s poetry run python examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
         shell: bash
 
@@ -63,26 +63,22 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up virtual environment and install dependencies (ocr-filter)
+      - name: Install dependencies (ocr-filter)
         run: |
           cd ocr-filter
-          python -m venv .venv
-          source .venv/bin/activate
           pip install poetry
-          if [ -f pyproject.toml ]; then poetry lock --no-update && poetry install --no-root; else echo "No pyproject.toml in ocr-filter"; fi
+          poetry install --no-root
         shell: bash
 
       - name: Run OCR tests
         run: |
           cd ocr-filter
-          source .venv/bin/activate
           poetry run pytest || echo "Tests completed with errors"
         shell: bash
 
       - name: Run OCR pipeline
         run: |
           cd ocr-filter
-          source .venv/bin/activate
           export PYTHONPATH=$PYTHONPATH:$(pwd)
-          timeout 30s python pipeline_runner.py || echo "OCR pipeline finished or timed out"
+          timeout 30s poetry run python pipeline_runner.py || echo "OCR pipeline finished or timed out"
         shell: bash
