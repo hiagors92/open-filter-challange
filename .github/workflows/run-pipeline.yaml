@@ -36,6 +36,7 @@ jobs:
 
       - name: Set up virtual environment and install dependencies
         run: |
+          cd openfilter
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
@@ -69,6 +70,7 @@ jobs:
 
       - name: Set up virtual environment and install dependencies
         run: |
+          cd ocr-filter
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
