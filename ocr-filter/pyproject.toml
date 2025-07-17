@@ -8,6 +8,10 @@ packages = { find = { include = ["filter_hello_ocr"] } }
 [tool.setuptools.dynamic]
 version = { file = "VERSION" }
 
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^6.2.1"
+
 [project]
 name = "filter_hello_ocr"
 readme = "README.md"
@@ -47,7 +51,7 @@ dev = [
   "twine>=6.1.0,<7",
   "wheel==0.44.0",
   "pytest==8.3.4",
-  "pytest-cov==6.0.0",
+  "pytest-cov>=6.2.1,<7",
   "pytest-bdd",
 ]
 

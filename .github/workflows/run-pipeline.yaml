@@ -9,10 +9,10 @@ on:
       - 'openfilter/**'
       - 'ocr-filter/**'
       - '.github/workflows/run-pipeline.yaml'
-  pull_request: 
+  pull_request:
     branches:
       - main
-    types: [opened, synchronize, reopened] 
+    types: [opened, synchronize, reopened]
     paths:
       - 'openfilter/**'
       - 'ocr-filter/**'
@@ -21,7 +21,7 @@ on:
 jobs:
   run-openfilter-pipeline:
     timeout-minutes: 10
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' 
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     env:
       OPENLINEAGE_DISABLED: true
@@ -34,19 +34,18 @@ jobs:
         with:
           python-version: "3.12"
 
-
-      - name: Set up virtual environment and install dependencies
+      - name: Set up virtual environment and install dependencies (openfilter)
         run: |
           cd openfilter
-          pip install poetry
-          if [ -f pyproject.toml ]; then poetry lock && poetry install; else echo "No pyproject.toml in openfilter"; fi
+          pip install poetry # Instala o Poetry globalmente ou no venv default do setup-python
+          if [ -f pyproject.toml ]; then poetry lock --no-update && poetry install --no-root; else echo "No pyproject.toml in openfilter"; fi
         shell: bash
 
-      - name: Run pipeline
+      - name: Run OpenFilter pipeline
         run: |
-          source .venv/bin/activate
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          timeout 30s python openfilter/examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
+          cd openfilter # Navega para a pasta do projeto openfilter
+          export PYTHONPATH=$PYTHONPATH:$(pwd) # Adiciona o diretório atual ao PYTHONPATH
+          timeout 30s poetry run python examples/hello-world/pipeline_runner.py || echo "Pipeline finished or timed out"
         shell: bash
 
   run-ocr-filter-pipeline:
@@ -64,14 +63,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up virtual environment and install dependencies
+      - name: Set up virtual environment and install dependencies (ocr-filter)
         run: |
           cd ocr-filter
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install --upgrade pip
-          pip install poetry
-          if [ -f pyproject.toml ]; then poetry lock && poetry install; else echo "No pyproject.toml in ocr-filter"; fi
+          python -m venv .venv           # Cria o ambiente virtual localmente
+          source .venv/bin/activate      # Ativa o ambiente virtual
+          pip install --upgrade pip      # Atualiza o pip dentro do venv
+          pip install poetry             # Instala o Poetry dentro do venv
+          if [ -f pyproject.toml ]; then poetry lock --no-update && poetry install --no-root; else echo "No pyproject.toml in ocr-filter"; fi
         shell: bash
 
       - name: Run OCR tests
