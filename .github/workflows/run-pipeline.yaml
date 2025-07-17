@@ -38,7 +38,7 @@ jobs:
         run: |
           cd openfilter
           pip install poetry # Instala o Poetry globalmente ou no venv default do setup-python
-          if [ -f pyproject.toml ]; then poetry lock --no-update && poetry install --no-root; else echo "No pyproject.toml in openfilter"; fi
+          if [ -f pyproject.toml ]; then poetry lock && poetry install --no-root; else echo "No pyproject.toml in openfilter"; fi
         shell: bash
 
       - name: Run OpenFilter pipeline
@@ -66,10 +66,9 @@ jobs:
       - name: Set up virtual environment and install dependencies (ocr-filter)
         run: |
           cd ocr-filter
-          python -m venv .venv           # Cria o ambiente virtual localmente
-          source .venv/bin/activate      # Ativa o ambiente virtual
-          pip install --upgrade pip      # Atualiza o pip dentro do venv
-          pip install poetry             # Instala o Poetry dentro do venv
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install poetry
           if [ -f pyproject.toml ]; then poetry lock --no-update && poetry install --no-root; else echo "No pyproject.toml in ocr-filter"; fi
         shell: bash
 
