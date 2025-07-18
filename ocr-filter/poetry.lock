@@ -4125,4 +4125,4 @@ dev = ["build", "pytest", "pytest-bdd", "pytest-cov", "setuptools", "twine", "wh
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10, <3.13"
-content-hash = "1b7dceae05b3383d2ed5e38f9823f76245da5ddf4e68e69fc20b7905be663c61"
+content-hash = "b4d277da83dda8f22271018ac95edcf04c183d790ced1a78af59665de7ee3f38"
