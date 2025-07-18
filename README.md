@@ -38,9 +38,11 @@ This project was developed as part of a practical evaluation to demonstrate the 
 
 ## Important Notice: Pipeline Learning and Refinement
 
-During early development, a key architectural flaw was identified: the absence of preprocessing filters for isolating license plates prior to OCR. This oversight caused the model to process irrelevant regions of the video frames, producing noisy results.
+During the early development of this project, an opportunity for significant architectural improvement was identified. The initial pipeline configuration did not fully leverage OpenFilter's capabilities for specialized preprocessing, as it lacked dedicated filters for license plate detection and cropping. Consequently, the OCR was applied broadly to full video frames, which led to less precise and noisier recognition results for our specific license plate objective.
 
-Although the provided benchmark video was identified as incorrect late in the process, the project prioritized fixing the pipeline’s structure to ensure modularity, robustness, and testability — essential traits in real-world systems.
+This experience served as a valuable learning point in optimizing pipeline design for highly specific computer vision tasks. Furthermore, an oversight in selecting the input video led to the use of a non-benchmark source during initial testing, which momentarily impacted validation efforts.
+
+Upon addressing these two key areas, the pipeline underwent a significant refactoring. By integrating the necessary detection and cropping modules, the system now achieves a more robust, modular, and testable structure, fully aligned with best practices for real-world computer vision applications.
 
 ## What Worked
 
