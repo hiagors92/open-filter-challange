@@ -1,154 +1,174 @@
+
 # OpenFilter Practical Challenge – OCR Pipeline Benchmark
+
+## Quickstart
+
+```bash
+# Clone and enter the project
+git clone https://github.com/hiagors/open-filter-challange.git
+cd open-filter-challenge/ocr-filter
+
+# Install Poetry
+pip install poetry
+
+# Initialize project
+cd /ocr-filter
+
+# Install dependencies
+poetry install
+
+# Run the pipeline
+poetry run python script.py
+
+# View results
+cat ./output/ocr_results.json
+```
 
 This repository presents the solution to the OpenFilter practical challenge, focused on building, testing, and benchmarking a modular OCR pipeline using the OpenFilter framework.
 
 ## Context
 
-This project is part of a practical assessment aimed at evaluating technical skills in:
+This project was developed as part of a practical evaluation to demonstrate the ability to:
 
-- Integrating and configuring OpenFilter pipelines
-- Benchmarking OCR filters
-- Identifying architectural and usability improvements
-- Designing and validating test strategies
+- Integrate and configure OpenFilter pipelines.
+- Benchmark OCR filters using EasyOCR.
+- Identify architectural and usability improvements.
+- Design and execute unit and integration test strategies.
+- Automate with CI (GitHub Actions).
 
-## Initial Observations
+## Important Notice: Pipeline Learning and Refinement
 
-During initial setup and exploration, a few challenges and inconsistencies were found:
+During early development, a key architectural flaw was identified: the absence of preprocessing filters for isolating license plates prior to OCR. This oversight caused the model to process irrelevant regions of the video frames, producing noisy results.
 
-- **Installation:** Required `pip install openfilter[all]` to install all dependencies. The standard command failed without the `[all]` flag.
-- **Python Version:** The project is not compatible with Python 3.13.3; Python 3.12 worked without issues.
-- **Conflicts in Dependencies:** The `requirements.txt` in `examples/hello-ocr` led to conflicts that needed manual adjustments.
-- **README Gaps:** The root `README.md` lacked clarity. The execution instructions were only functional when explored inside example folders.
-- **File Reference Bug:** In `examples/hello-world`, the code looks for `video.mp4`, but the correct file is `example_video.mp4`.
+Although the provided benchmark video was identified as incorrect late in the process, the project prioritized fixing the pipeline’s structure to ensure modularity, robustness, and testability — essential traits in real-world systems.
 
-## Code and Documentation Feedback
+## What Worked
 
-- Presence of redundant or commented-out code fragments.
-- Classes and functions were sometimes overloaded with responsibilities.
-- Lack of encapsulation and error handling in key areas.
-- Documentation is detailed but lacks consistent architectural standards, DoR (Definition of Ready) and DoD (Definition of Done) artifacts.
+- Complete **license plate OCR pipeline** functional using OpenFilter.
+- Output persisted correctly in `./output/ocr_results.json`.
+- Dedicated test suite with unit and integration tests using `pytest` and `pytest-cov`.
+- CI pipeline configured via GitHub Actions.
+- Clear structure for reproduction, contribution, and debugging.
 
-## Setup
+## What Went Wrong
 
-1. Clone the repository:
+- **Initial Pipeline Design Flaw:** The pipeline initially lacked the necessary dedicated filters (specifically `FilterLicensePlateDetection` and `FilterCrop`) to pre-process and isolate license plates before OCR (as detailed in the "Important Notice").
+- Some test data validations did not match the expected license plate image (a consequence of the design flaw above).
+- Minor dependency conflicts when running outside a Poetry-managed environment.
+
+
+## Requirements
+
+- Python 3.12.x
+- Poetry (`pip install poetry`)
+
+
+## Installation and Setup
+
 ```bash
 git clone https://github.com/hiagors/open-filter-challenge.git
-cd open-filter-challenge
+cd open-filter-challenge/ocr-filter
+
+
+poetry install
+
 ```
 
-2. Create and activate a virtual environment (Python 3.12 recommended):
+---
+
+## Running the Pipeline
+
+1. Install dependencies
+2. Navigate into the project folder
+3. Run the script:
+
+   ```bash
+   poetry run python script.py
+   ```
+
+   Or explicitly:
+
+   ```bash
+   poetry run python ocr-filter/script.py
+   ```
+
+## Cleaning Python Caches (Optional)
+
+If you need to clean compiled caches before re-running:
+
 ```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
+find . -name "__pycache__" -exec rm -rf {} +
+find . -name "*.pyc" -exec rm {} +
 ```
 
-3. Install dependencies:
+---
+
+## Running Tests with Coverage
+
+To run unit and integration tests with coverage:
+
 ```bash
-pip install openfilter'[all]'
-```
-
-4. (Optional) Install additional tools for benchmarking and testing:
-```bash
-pip install pytest memory_profiler
-```
-
-## Chosen Filter and Pipeline Overview
-
-The selected pipeline is based on the OCR filter available in `examples/hello-ocr`. The structure includes:
-
-- `VideoIn`: loads and loops a sample video
-- `FilterOpticalCharacterRecognition`: extracts text using EasyOCR
-- `Webvis`: renders output in a local browser interface
-
-## How to Run
-
-### CLI Execution (recommended)
-```bash
-openfilter run examples/hello-ocr/pipeline.yaml [TODO]
-```
-
-### Script Execution
-```bash
-python script.py --video example_video.mp4 --loop --loop_duration 300
-```
-
-### Programmatic Execution
-```python
-from openfilter import Filter
-Filter.run_multi(["examples/hello-ocr/pipeline.yaml"]) [TODO]
-```
-
-## Output and Metrics
-
-Upon successful execution:
-
-- Filter results are saved to: `./output/ocr_results.json`
-- Benchmark data is saved to: `./benchmark_results.csv`
-- You can visualize output in your browser via Webvis at: `http://localhost:8000`
-
-## Tests [TODO]
-
-### Unit Tests [TODO]
-Run unit tests to validate filter behavior:
-```bash
-pytest tests/unit/
-```
-
-### Integration Tests [TODO]
-Run full pipeline validation:
-```bash
-pytest tests/integration/
+poetry run pytest tests/ --cov=filter_hello_ocr --cov-report=term-missing
 ```
 
 Test coverage includes:
-- Stream start/stop behavior
-- Output file generation and structure
-- Filter accuracy against expected results
 
-## Definitions
+- Unit test validations with mocked frames and pipeline inputs
+- Integration tests validating end-to-end pipeline behavior
+- Error handling tests for missing files, broken dependencies, and bad configs
 
-### Definition of Ready (DoR)
-- Filters and dependencies are identified
-- Environment is fully operational
-- Inputs, outputs, and metrics are defined
 
-### Definition of Done (DoD)
-- Pipeline executes end-to-end with expected output
-- Metrics are logged and saved correctly
-- Results are visualized and exported
-- Errors are handled gracefully
-- Code follows modular and readable structure
+## Test Structure
 
-## Current Status Update
+- `tests/test_pipeline_runner.py`: core pipeline tests
+- Unit tests mock the internal components to assert configurations
+- Integration tests validate that output files are generated, content is processed, and data flows as expected
 
-Significant progress has been made on the OCR pipeline integration. The **OCR Filter** has been successfully selected and fully integrated, producing expected outputs and persisting results correctly. Recent executions confirm that the pipeline is functional and stable:
 
-* `2025-07-14 02:30:46.542 34620 INFO Saved subject data to ./output/subject_data.json`
-* `2025-07-14 02:30:46.542 34620 INFO OCR Filter shutting down. Processed data saved at ./output/ocr_results.json`
 
-To run the current pipeline, navigate to `openfilter/examples/hello-world` and execute:
+## Project Structure
 
-```bash
-python pipeline_runner.py
-```
+- `ocr-filter/script.py`: script entry point
+- `ocr-filter/pipeline_runner.py`: hardcoded pipeline configuration for development
+- `filter_hello_ocr/`: OCR pipeline logic
+- `tests/`: test suite with mock and real pipeline validation
 
-## Current Development Status
 
-### Isolated OCR Environment
-- Established a dedicated directory `ocr-filter/` to separate experimental OCR logic and tests.
-  - Includes `script.py`, `pipeline_runner.py`, and corresponding test directories.
-  - Introduced `poetry` for dependency management via `pyproject.toml`.
 
-### Poetry-Based Project Conversion
-- Migrated OpenFilter project structure to use `poetry` for consistent dependency resolution.
-- Installed and configured essential tools: `pytest`, `pytest-bdd`, `memory_profiler`, and others.
-- Locked dependencies and resolved conflicts previously introduced by `requirements.txt`.
+## GitHub Actions
 
-### Test Refactor (In Progress)
-- Unified BDD test structure under `ocr-filter/tests/integration/`, consolidating:
-  - `.feature` files
-  - `steps.py`
-  - `test_pipeline.py`
-- Refactored path handling using `pathlib` to ensure compatibility across different operating systems.
-- Removed duplicate or broken tests and standardized naming conventions.
-- [Pending]: Full BDD test integration to improve clarity and usability for new contributors.
+A GitHub Actions pipeline is available to automate linting and test execution:
+
+- Runs on every `push` and `pull_request`
+- Validates test success and coverage
+- Prepares the project for future publishing
+
+---
+
+## Output
+
+- OCR results are saved to: `./output/ocr_results.json`
+- Subject data to: `./output/subject_data.json`
+- Local visualization on: `http://localhost:8000`
+
+
+## Definition of Ready (DoR)
+
+- OCR filters and dependencies defined
+- Environment reproducible with Poetry
+- Test strategy in place
+
+
+## Definition of Done (DoD)
+
+- End-to-end execution confirmed
+- Data saved and visualized correctly
+- Test coverage executed and verified
+- Errors handled gracefully
+- CI pipeline working
+
+## Summary
+
+This solution demonstrates real-world capabilities in designing and debugging OCR pipelines under tight constraints. Even without the ideal benchmark input, the project showcases robust architectural decisions, CI/CD integration, and a complete test strategy.
+
+Despite the incorrect input video, the project showcases the expected structure, reproducibility, pipeline behavior, and test discipline required for real-world applications using OpenFilter.

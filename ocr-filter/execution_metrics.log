@@ -1,0 +1,149 @@
+2025-07-17 22:16:18 [CRITICAL] Arquivo de configuração 'config.yaml' não encontrado.
+2025-07-17 22:16:18 [CRITICAL] Erro fatal: Arquivo de configuração 'config.yaml' não encontrado.. Certifique-se de que o arquivo de configuração e/ou vídeo existem.
+2025-07-17 22:21:05 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:21:05 [CRITICAL] Ocorreu um erro inesperado durante a execução principal: 'output_port'
+Traceback (most recent call last):
+  File "/Users/hiagorodrigues/open-filter-challange/ocr-filter/script.py", line 116, in <module>
+    "outputs": [f"tcp://*:{app_config['video_in']['output_port']}"],
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'output_port'
+2025-07-17 22:22:11 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:22:11 [CRITICAL] Ocorreu um erro inesperado durante a execução principal: 'output_port'
+Traceback (most recent call last):
+  File "/Users/hiagorodrigues/open-filter-challange/ocr-filter/script.py", line 116, in <module>
+    "outputs": [f"tcp://*:{app_config['video_in']['output_port']}"],
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'output_port'
+2025-07-17 22:28:28 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:30:41 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:33:33 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:35:22 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:36:04 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:37:07 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:38:16 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:44:08 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:44:53 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:46:39 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:49:25 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:50:17 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 22:52:54 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:55:37 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:56:48 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 22:56:50 [INFO] Configuração carregada com sucesso.
+2025-07-17 22:58:45 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 22:58:48 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:00:10 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 23:01:14 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:02:16 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 23:06:41 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:07:43 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 23:09:41 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:10:43 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 23:11:38 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:13:02 [INFO] Pipeline interrupted by user (Ctrl+C). Attempting to save metrics.
+2025-07-17 23:33:14 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:33:14 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:33:14 [INFO] Portas alocadas: VideoIn Out=62358, OCRFilter Out=62359, SaveFilter Out=62360, Webvis In=62360
+2025-07-17 23:33:14 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:33:19 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:35:46 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:35:46 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:35:46 [INFO] Portas alocadas: VideoIn Out=62401, OCRFilter Out=62402, SaveFilter Out=62403, Webvis In=62403
+2025-07-17 23:35:46 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:35:51 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:37:25 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:37:25 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:37:25 [INFO] Portas alocadas: VideoIn Out=62509, OCRFilter Out=62510, SaveFilter Out=62511, Webvis In=62511
+2025-07-17 23:37:25 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:37:31 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:39:19 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:39:19 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:39:19 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-17 23:39:19 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:39:26 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:41:25 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:41:25 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:41:25 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-17 23:41:25 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:41:32 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:44:04 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:44:04 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:44:04 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-17 23:44:04 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:44:12 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:46:23 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:46:23 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:46:23 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-17 23:46:23 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:46:30 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:51:04 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:51:04 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:51:04 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-17 23:51:04 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:52:09 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-17 23:55:32 [INFO] Configuração carregada com sucesso.
+2025-07-17 23:55:32 [INFO] Loop de vídeo desativado via configuração.
+2025-07-17 23:55:32 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-17 23:55:32 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-17 23:56:37 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:00:00 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:00:00 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:00:00 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-18 00:00:00 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:01:05 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:03:31 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:03:31 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:03:31 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-18 00:03:31 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:04:36 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:16:57 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:16:57 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:16:57 [INFO] Portas alocadas: VideoIn Out=49152, LPD Out=49162, Crop Out=49172, OCRFilter Out=49182, SaveFilter Out=49192, Webvis In=49192
+2025-07-18 00:16:57 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:17:06 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:22:47 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:22:47 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:22:47 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-18 00:22:47 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:23:52 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:29:31 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:29:31 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:29:31 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-18 00:29:31 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:30:36 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:31:54 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:31:54 [INFO] Fonte de vídeo sobrescrita para: ./example_video.mp4
+2025-07-18 00:31:54 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:31:54 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-18 00:31:54 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:32:59 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:33:12 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:33:12 [INFO] Fonte de vídeo sobrescrita para: ./example_video.mp4
+2025-07-18 00:33:12 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:33:12 [INFO] Portas alocadas: VideoIn Out=49162, OCRFilter Out=49172, SaveFilter Out=49182, Webvis In=49182
+2025-07-18 00:33:12 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:34:17 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:34:44 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:34:44 [INFO] Fonte de vídeo sobrescrita para: ./hello.mov
+2025-07-18 00:34:44 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:34:44 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49172, SaveFilter Out=49182, Webvis In=49182
+2025-07-18 00:34:44 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:35:04 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:41:55 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:41:55 [INFO] Loop de vídeo desativado via configuração.
+2025-07-18 00:41:55 [INFO] Portas alocadas: VideoIn Out=49152, OCRFilter Out=49162, SaveFilter Out=49172, Webvis In=49172
+2025-07-18 00:41:55 [INFO] Pipeline rodando até o fim do vídeo. Pressione Ctrl+C para interromper.
+2025-07-18 00:42:00 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:43:48 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:43:48 [INFO] Executando pipeline com OCR...
+2025-07-18 00:44:08 [INFO] Pipeline interrompido pelo usuário (Ctrl+C). Salvando métricas.
+2025-07-18 00:44:09 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:44:17 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:44:17 [INFO] Fonte de vídeo sobrescrita para: ./hello.mov
+2025-07-18 00:44:17 [INFO] Executando pipeline com OCR...
+2025-07-18 00:44:28 [INFO] Pipeline interrompido pelo usuário (Ctrl+C). Salvando métricas.
+2025-07-18 00:44:29 [INFO] Métricas salvas em benchmark_results.csv
+2025-07-18 00:46:19 [INFO] Configuração carregada com sucesso.
+2025-07-18 00:46:19 [INFO] Executando pipeline com OCR...
+2025-07-18 00:47:11 [INFO] Pipeline interrompido pelo usuário (Ctrl+C). Salvando métricas.
+2025-07-18 00:47:12 [INFO] Métricas salvas em benchmark_results.csv
